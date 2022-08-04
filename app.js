@@ -119,7 +119,17 @@ app.get("/register", function(req, res){
     res.render("register");
 });
 
+app.get("/logout", function(req, res){
+if(req.isAuthenticated()){
+    req.logout(function(err){
+        if(!err){
+            res.redirect("/")
+        }
+    })
+}
 
+
+})
 app.get("/secrets", function(req, res){
     if(req.isAuthenticated()){
      User.find({}, function(err, foundsecrets){
