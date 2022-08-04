@@ -64,7 +64,7 @@ main().catch(err => console.log(err));
   passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/secrets",
+    callbackURL: "https://immense-hollows-18853.herokuapp.com/auth/google/secrets",
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({username: profile.emails[0].value , googleId: profile.id }, function (err, user) {
@@ -77,7 +77,7 @@ main().catch(err => console.log(err));
 passport.use(new FacebookStrategy({
     clientID: process.env.APP_ID,
     clientSecret: process.env.APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/secrets"
+    callbackURL: "https://immense-hollows-18853.herokuapp.com/auth/facebook/secrets"
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ facebookId: profile.id }, function (err, user) {
